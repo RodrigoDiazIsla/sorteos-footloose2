@@ -1,0 +1,14 @@
+# Cantidad de participantes 
+https://apis.footloose.pe/api-rest/icq01/sorteo/cantidad
+
+# Ejecutar sorteo 
+https://apis.footloose.pe/api-rest/icq01/sorteo/ejecutar
+
+# Lista de ganadores 
+https://apis.footloose.pe/api-rest/icq01/sorteo/list
+
+# Limpiar lista de ganadores
+https://apis.footloose.pe/api-rest/icq01/sorteo/clean
+
+# Exportar lista de ganadores 
+https://apis.footloose.pe/api-rest/icq01/sorteo/exportList
