@@ -8,7 +8,11 @@ class WinnersModel {
   String? email;
   String? code;
   String? phone;
+  String? phoneRaw;
   String? premio;
+  String? ubicacion;
+  String? tienda;
+  int? lote;
 
   WinnersModel({
     this.index,
@@ -17,7 +21,11 @@ class WinnersModel {
     this.email,
     this.code,
     this.phone,
+    this.phoneRaw,
     this.premio,
+    this.ubicacion,
+    this.tienda,
+    this.lote,
   });
 
   /// Constructor desde JSON individual
@@ -29,10 +37,36 @@ class WinnersModel {
       email: hideData(json['email']),
       code: json['codigoregalon'],
       phone: hideData(json['celular']),
-      premio: json['premio'],
+      phoneRaw: _readString(json, ['celular', 'telefono', 'phone']),
+      premio: _readString(json, ['premio', 'Premio', 'nombrePremio', 'nombrepremio', 'premioGanado', 'premio_ganado', 'descripcionPremio', 'descripcionpremio']),
+      lote: _readInt(json, ['lote', 'Lote', 'idLote', 'idlote', 'id_lote']),
+      ubicacion: _readString(json, ['ubicacion', 'Ubicacion', 'location']),
+      tienda: _readString(json, ['tienda', 'Tienda', 'store']),
     );
   }
 
+
+  static String? _readString(Map<String, dynamic> json, List<String> keys) {
+    for (final key in keys) {
+      final value = json[key];
+      if (value != null && value.toString().trim().isNotEmpty) {
+        return value.toString().trim();
+      }
+    }
+    return null;
+  }
+
+  static int? _readInt(Map<String, dynamic> json, List<String> keys) {
+    for (final key in keys) {
+      final value = json[key];
+      if (value is int) return value;
+      if (value != null) {
+        final parsed = int.tryParse(value.toString());
+        if (parsed != null) return parsed;
+      }
+    }
+    return null;
+  }
   /// Método para mapear lista de JSON a lista de WinnersModel
   static List<WinnersModel> fromJsonList(List<dynamic> jsonList) {
     return jsonList.map((e) => WinnersModel.fromJson(e)).toList();
@@ -47,7 +81,11 @@ class WinnersModel {
       ..email = email
       ..code = code
       ..phone = phone
-      ..premio = premio;
+      ..phoneRaw = phoneRaw
+      ..premio = premio
+      ..ubicacion = ubicacion
+      ..tienda = tienda
+      ..lote = lote;
   }
 
   /// Convertir lista de modelos a lista de modelos de BD
@@ -55,4 +93,7 @@ class WinnersModel {
     return list.map((winner) => winner.toBD()).toList();
   }
 }
+
+
+
 

@@ -11,5 +11,12 @@ class Winner {
   String? email;
   String? code;
   String? phone;
+  String? phoneRaw;
   String? premio;
+  String? ubicacion;
+  String? tienda;
+  int? lote;
 }
+
+
+

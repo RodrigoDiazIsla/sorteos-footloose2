@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:raffle_footloose/api/query_service.dart';
 import 'package:raffle_footloose/providers/raffle_provider.dart';
@@ -11,7 +11,7 @@ class ExportWinners extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomButton(
       icon: Icons.table_view_rounded,
-      title: "EXPORTAR (EXCEL)", // Texto más corto para evitar overflow
+      title: "EXPORTAR (EXCEL)", // Texto mÃ¡s corto para evitar overflow
       onTap: () => exportWinnersDB(ref),
     );
   }
@@ -20,6 +20,6 @@ class ExportWinners extends ConsumerWidget {
     final QueryService query = QueryService();
     final nameAward = ref.read(raffleProvider).name;
     final nameFile = nameAward.isEmpty ? "reporte_ganadores_footloose" : "ganadores_$nameAward";
-    await query.exportAndOpenExcel(nameFile);
+    await query.exportWinnersReport(nameFile);
   }
 }

@@ -9,7 +9,7 @@ String getFileImage(SpecialDays specialDays) {
     case SpecialDays.mothersDay:
       return "lib/assets/banner_mothers_day.png";
     case SpecialDays.cyberWow:
-      return "lib/assets/banner_cyber_wow.png";
+      return "lib/assets/sorteo_octubre.png";
   }
 }
 
@@ -26,4 +26,5 @@ Widget getFlyerImage(SpecialDays specialDays) {
       return const SizedBox(height: 40);
   }
 }
+
 

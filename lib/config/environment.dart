@@ -17,3 +17,5 @@ class Environment {
   static SpecialDays currentSpecialDay = SpecialDays.cyberWow;
 
 }
+
+
